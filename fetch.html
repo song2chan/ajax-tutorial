@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fetch</title>
+  </head>
+  <body>
+    <article></article>
+    <input
+      type="button"
+      value="fetch"
+      onclick="
+    fetch('3.html').then(function(response) {
+      response.text().then(function(text) { 
+        document.querySelector('article').innerHTML = text;
+        })
+      })
+
+    ajax fetch API에 대한 원리
+    fetch('3.html') = 웹 브라우저야 3.html라는 파일을 서버에게 요청해줘
+
+    then = 서버가 데이터를 꺼내서 응답하는데에 delay가 발생하니까 서버에서 데이터를 가져 온 뒤에
+    함수를 실행시켜 줘 
+
+    asynchronous = 비동기적인 * ajax의 첫 a
+    fetch('3.html').then(callback); console.log(1); 이렇게 할 경우 서버에 요청하는 시간 동안
+    console.log(1)이 먼저 찍힐 거임. 이런걸 비동기적인 실행이라고 함. 동기적인 실행은 데이터를 가져 올 때 까지
+    fetch('3.html')에 머물러 있는 상태를 뜻함. (synchronous)
+
+    response = then에 callback 함수를 주게 되면 callback 함수를 fetch API가 실행시킬 때, 저 함수의
+    첫번째 인자의 값으로 fetch를 통해 요청한 데이터를 담고있는 response(이름은 상관X)라는 객체를 준다.
+    객체의 속성 중에는 status라는 속성이 있는데 응답이 성공했을 경우 200,
+    실패했을 경우 404 (data not found)라는 값이 들어가도록 약속되어 있다.
+
+    위에 근거해서 if(response.status == '404') { alert('not found')} 같은 방식으로 사용 가능!!
+    "
+    />
+  </body>
+</html>
